@@ -38,7 +38,7 @@ export async function getTiktokURL (csrfToken: Uint8Array) {
         "client_key": `${process.env.TIKTOK_CLIENT_KEY}`,
         "scope": "user.info.basic,video.list",
         "response_type": "code",
-        "redirect_uri": "https://tiktok-integration-playground.vercel.app/authorize/?",
+        "redirect_uri": "https://tiktok-integration-playground.vercel.app/authorize/",
         "state": `${csrfToken}`,
         "code_challenge": codeChallenge,
         "code_challenge_method": 'S256',
