@@ -18,7 +18,7 @@ export function LoginButton() {
             " client_key": `${process.env.TIKTOK_CLIENT_KEY}`,
             "scope": "user.info.basic",
             "response_type": "code",
-            "redirect_uri": "https://tiktok-integration-playground.vercel.app/authorize",
+            "redirect_uri": "https://tiktok-integration-playground.vercel.app/authorize/",
             "state": `${csrfToken}`,
         });
 

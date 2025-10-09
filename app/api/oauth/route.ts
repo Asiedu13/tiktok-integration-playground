@@ -10,11 +10,11 @@ export async function POST(request: NextRequest) {
         "client_key": `${process.env.TIKTOK_CLIENT_KEY}`,
         "scope": "user.info.basic",
         "response_type": "code",
-        "redirect_uri": "http://localhost:3000/feed",
+        "redirect_uri": "https://tiktok-integration-playground.vercel.app/authorize/",
         "state": `${csrfToken}`,
     });
     const cookieStore = await cookies();
-    cookieStore.set({
+   cookieStore.set({
         name: 'csrfState',
         value: crypto.randomUUID(),
         maxAge: 60, // 60 seconds
@@ -22,5 +22,7 @@ export async function POST(request: NextRequest) {
         secure: true,
         path: '/',
     })
+
+
     return NextResponse.redirect(`${url}${urlParams.toString()}`);
 }
