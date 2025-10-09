@@ -23,7 +23,7 @@ export default function Page({searchParams}: searchParamsType) {
         }
     }
 
-    const newRedirectURI: string = `http://localhost:3000/?${authorizedURLParams.toString()}`;
+    const newRedirectURI: string = `http://localhost:3000/feed/?${authorizedURLParams.toString()}`;
     console.log(newRedirectURI);
     redirect(newRedirectURI);
 
