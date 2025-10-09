@@ -13,8 +13,8 @@ export async function POST(request: NextRequest) {
         "redirect_uri": "http://localhost:3000/feed",
         "state": `${csrfToken}`,
     });
-
-   await cookies().set({
+    const cookieStore = await cookies();
+    cookieStore.set({
         name: 'csrfState',
         value: crypto.randomUUID(),
         maxAge: 60, // 60 seconds
@@ -22,7 +22,5 @@ export async function POST(request: NextRequest) {
         secure: true,
         path: '/',
     })
-
-
-    return new Response.redirect(`${url}${urlParams.toString()}`);
+    return NextResponse.redirect(`${url}${urlParams.toString()}`);
 }

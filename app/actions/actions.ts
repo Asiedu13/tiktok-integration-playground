@@ -3,7 +3,7 @@ import crypto from "crypto";
 import {cookies} from "next/headers";
 
 // Base64url encoder
-function base64UrlEncode(arrayBuffer) {
+function base64UrlEncode(arrayBuffer: Uint8Array | ArrayBuffer ) {
     const bytes = new Uint8Array(arrayBuffer)
     let binary = ''
     for (let i = 0; i < bytes.byteLength; i++) {
@@ -25,7 +25,8 @@ export async function getTiktokURL (csrfToken: Uint8Array) {
     const codeChallenge = base64UrlEncode(hashBuffer)
 
     // Store verifier securely in cookies
-    await cookies().set('tiktok_code_verifier', codeVerifier, {
+    const cookieStore = await cookies();
+    cookieStore.set('tiktok_code_verifier', codeVerifier, {
         httpOnly: true,
         secure: true,
         path: '/',

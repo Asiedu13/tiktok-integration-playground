@@ -8,7 +8,7 @@ export function LoginButton() {
     const [isPending, startTransition] = useTransition();
     const router = useRouter();
 
-    const handleSubmit = async  (e) => {
+    const handleSubmit:  React.FormEventHandler<HTMLFormElement> = async (e) => {
         e.preventDefault();
         // required by TikTok to confirm the request
         const someRandomValue = new Uint8Array(30);
@@ -26,7 +26,7 @@ export function LoginButton() {
             const tiktokLogin = await getTiktokURL(csrfToken);
             console.log({tiktokLogin})
             if (tiktokLogin) {
-                window.location = `${tiktokLogin}`;
+                window.location = `${tiktokLogin}` as Location &string;
             }
         })
 
