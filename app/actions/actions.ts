@@ -35,7 +35,7 @@ export async function getTiktokURL (csrfToken: Uint8Array) {
     console.log(process.env.TIKTOK_CLIENT_KEY);
     const url: string = `https://www.tiktok.com/v2/auth/authorize/?`
     const urlParams = new URLSearchParams({
-        "client_key": `${process.env.NEXT_PUBLIC_TIKTOK_CLIENT_KEY}`,
+        "client_key": `${process.env.TIKTOK_CLIENT_KEY}`,
         "scope": "user.info.basic,video.list",
         "response_type": "code",
         "redirect_uri": "https://tiktok-integration-playground.vercel.app/authorize/?",
