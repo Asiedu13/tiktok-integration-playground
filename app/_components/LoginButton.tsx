@@ -1,6 +1,6 @@
 "use client"
 import {useTransition} from "react";
-import {getTiktokURL, LoginWithTiktok} from "@/app/actions/actions";
+import {getTiktokURL} from "@/app/actions/actions";
 import {useRouter} from "next/navigation";
 
 

@@ -13,7 +13,7 @@ export default function Page({searchParams}: searchParamsType) {
     console.log(newRedirectURI);
 
     redirect(newRedirectURI);
-    
+
     return (
         <section>
             Redirecting...
