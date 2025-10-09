@@ -33,7 +33,7 @@ export async function getTiktokURL (csrfToken: Uint8Array) {
         maxAge: 300,
     })
     console.log(process.env.TIKTOK_CLIENT_KEY);
-    const url: string = `https://www.tiktok.com/v2/auth/authorize/?pp`
+    const url: string = `https://www.tiktok.com/v2/auth/authorize/?`
     const urlParams = new URLSearchParams({
         "client_key": `${process.env.TIKTOK_CLIENT_KEY}`,
         "scope": "user.info.basic,video.list",
