@@ -1,4 +1,3 @@
-import {Log} from "@/app/utils/functions";
 import {redirect} from "next/navigation";
 
 interface searchParamsType {
@@ -6,22 +5,7 @@ interface searchParamsType {
 }
 
 export default function Page({searchParams}: searchParamsType) {
-    console.log({searchParams})
-    const authorizedURLParams: URLSearchParams =  new URLSearchParams();
-
-
-    for (const key in searchParams) {
-        const value = searchParams[key];
-
-        if (typeof value === "string") {
-            authorizedURLParams.append(key,  String(value));
-
-        } else if (Array.isArray(value)) {
-            value.forEach(val => {
-                    authorizedURLParams.append(key,  String(val))
-            })
-        }
-    }
+    const authorizedURLParams: URLSearchParams =  new URLSearchParams(Object.fromEntries(searchParams));
 
     const newRedirectURI: string = `http://localhost:3000/feed/?${authorizedURLParams.toString()}`;
     console.log(newRedirectURI);
