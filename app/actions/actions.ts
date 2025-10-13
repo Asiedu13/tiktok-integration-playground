@@ -172,15 +172,33 @@ export async function getUserProfile(code: string) {
     const uri = `https://open.tiktokapis.com/v2/user/info/?fields=open_id,union_id,avatar_url,display_name`
     const {userAccessToken} = await getLocalCookies('userAccessToken');
     const accessToken = removeEncodedSpaces(userAccessToken)
-    console.log("Actions.ts: getUserFeed()",{accessToken});
+    console.log("Actions.ts: getUserProfile()",{accessToken});
     const OPTIONS =   {
-        // method: "POST",
         headers: {
             'Authorization': `Bearer ${accessToken}`
         }
     }
     const data = await GETTER(uri, OPTIONS);
-    console.log('actions.ts: getUserFeed()', {data});
+    console.log('actions.ts: getUserProfile()', {data});
     return data;
 }
 
+export async function getUserContent(code: string) {
+    // const uri: string = `https://open.tiktokapis.com/v2/video/list/?fields=cover_image_url,id,title`;
+    const uri: string = `https://open.tiktokapis.com/v2/video/list/?fields=id,title,video_description,duration,cover_image_url,embed_link`;
+
+    const {userAccessToken} = await getLocalCookies('userAccessToken');
+    const accessToken = removeEncodedSpaces(userAccessToken)
+    console.log("Actions.ts: getUserContent()",{accessToken});
+
+    const OPTIONS =   {
+        method: "POST",
+        headers: {
+            'Authorization': `Bearer ${accessToken}`
+        }
+    }
+
+    const data = await GETTER(uri,  OPTIONS);
+    console.log({data});
+    return data;
+}
